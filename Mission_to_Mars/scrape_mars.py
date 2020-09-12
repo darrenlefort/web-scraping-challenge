@@ -1,4 +1,5 @@
 # Dependencies
+# import splinter
 from splinter import Browser
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -6,8 +7,7 @@ import requests
 import pymongo
 
 def init_browser():
-    # @NOTE: Replace the path with your actual path to the chromedriver
-    executable_path = {"executable_path": "chromedriver.exe"}
+    executable_path = {'executable_path':r'C:\Users\dlefo\chromedriver.exe'}
     return Browser("chrome", **executable_path, headless=False)
 
 def scrape():
@@ -32,14 +32,6 @@ def scrape():
     # Retrieve featured image link
     relative_image_path = images_soup.find_all('img')[3]["src"]
     featured_image_url = jpl_nasa_url + relative_image_path
-
-    # Mars weather to be scraped
-    weather_url = 'https://twitter.com/marswxreport?lang=en'
-    browser.visit(weather_url)
-    weather_html = browser.html
-    weather_soup = BeautifulSoup(weather_html, 'html.parser')
-    # Retrieve latest tweet with Mars weather info
-    mars_weather = weather_soup.find_all('p', class_='TweetTextSize TweetTextSize--normal js-tweet-text tweet-text')[0].text
 
     # Mars facts to be scraped, converted into html table
     facts_url = 'https://space-facts.com/mars/'
