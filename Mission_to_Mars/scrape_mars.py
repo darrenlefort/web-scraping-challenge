@@ -74,7 +74,7 @@ def scrape():
         "news_title": news_title,
         "news_p": news_p,
         "featured_image_url": featured_image_url,
-        "mars_weather": mars_weather,
+        # "mars_weather": mars_weather,
         "fact_table": str(mars_html_table),
         "hemisphere_images": hemisphere_image_urls
     }
